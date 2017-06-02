@@ -275,6 +275,10 @@ asynckit@^0.4.0:
   version "0.4.0"
   resolved "https://registry.yarnpkg.com/asynckit/-/asynckit-0.4.0.tgz#c79ed97f7f34cb8f2ba1bc9790bcc366474b4b79"
 
+autobind-decorator@^1.4.1:
+  version "1.4.1"
+  resolved "https://registry.yarnpkg.com/autobind-decorator/-/autobind-decorator-1.4.1.tgz#e05887e92e6466d43ec247c0692f8774d95ca3fd"
+
 autoprefixer@7.1.0:
   version "7.1.0"
   resolved "https://registry.yarnpkg.com/autoprefixer/-/autoprefixer-7.1.0.tgz#ae4913adc221fa6ca5ad3a6f8039f6a5c06b3877"
