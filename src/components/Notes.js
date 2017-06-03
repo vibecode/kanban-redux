@@ -12,10 +12,11 @@ class Notes extends Component {
     const { notes, onValueClick, onEdit, onDelete } = this.props;
     return (
         <ul>
-          {notes.map(note =>
-              <li key={note.id}><Note
-                  task={note.task}
-                  onDelete={} />
+          {notes.map(({id, task}) =>
+              <li key={id}>
+                <Note
+                  task={task}
+                  onDelete={onDelete.bind(null, id)} />
               </li>
           )}
         </ul>
@@ -23,4 +24,4 @@ class Notes extends Component {
   }
 }
 
-export default connect(null, { move })(Notes);
+export default connect()(Notes);

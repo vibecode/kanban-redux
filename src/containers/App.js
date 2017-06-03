@@ -30,13 +30,23 @@ class App extends Component {
     )
   }
 
+  @autobind
+  deleteNote(id, e) {
+    //avoid bubbling to edit
+    e.stopPropagation();
+
+    this.setState({
+      notes: this.state.notes.filter(note => note.id !== id)
+    });
+  }
+
   render() {
     const { notes } = this.state;
 
     return (
         <div>
           <button onClick={this.addNote}>+</button>
-          <Notes notes={notes} />
+          <Notes notes={notes} onDelete={this.deleteNote}/>
         </div>
     );
   }
