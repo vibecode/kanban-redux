@@ -10,10 +10,11 @@ class Notes extends Component {
   }
 
   render() {
-    const { notes, onNoteClick, isEditing, onEdit, onDelete } = this.props;
+    const { notes, onNoteClick, onEdit, onDelete } = this.props;
+
     return (
         <ul>
-          {notes.map(({ id, task }) =>
+          {notes.map(({ id, task, isEditing }) =>
               <li key={id}>
                <Note onClick={onNoteClick.bind(null, id)}>
                  <Editable isEditing={isEditing}

@@ -35,9 +35,42 @@ class App extends Component {
     //avoid bubbling to edit
     e.stopPropagation();
 
+    const { notes } = this.state
+
     this.setState({
-      notes: this.state.notes.filter(note => note.id !== id)
+      notes: notes.filter(note => note.id !== id)
     });
+  }
+
+  @autobind
+  activateEditingMode(id) {
+    const { notes } = this.state;
+
+    this.setState({
+      notes: notes.map(note => {
+        if (note.id === id) {
+          note.isEditing = true;
+        }
+
+        return note;
+      })
+    })
+  }
+
+  @autobind
+  editNote(id, task) {
+    const { notes } = this.state;
+
+    this.setState({
+      notes: notes.map(note => {
+        if (note.id === id) {
+          note.isEditing = false;
+          note.task = task;
+        }
+
+        return note;
+      })
+    })
   }
 
   render() {
@@ -48,8 +81,8 @@ class App extends Component {
           <button onClick={this.addNote}>+</button>
           <Notes notes={notes}
                  onDelete={this.deleteNote}
-                 onNoteClick={() => null}
-                 onEdit={() => null} />
+                 onNoteClick={this.activateEditingMode}
+                 onEdit={this.editNote} />
         </div>
     );
   }
