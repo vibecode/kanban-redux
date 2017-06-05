@@ -46,7 +46,10 @@ class App extends Component {
     return (
         <div>
           <button onClick={this.addNote}>+</button>
-          <Notes notes={notes} onDelete={this.deleteNote}/>
+          <Notes notes={notes}
+                 onDelete={this.deleteNote}
+                 onNoteClick={() => null}
+                 onEdit={() => null} />
         </div>
     );
   }
