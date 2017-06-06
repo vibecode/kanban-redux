@@ -9,7 +9,7 @@ export const createNote = (note) => {
     type: CREATE_NOTE,
     note: {
       id: uuid,
-        ...note
+      ...note
     }
   }
 };
@@ -17,13 +17,13 @@ export const createNote = (note) => {
 export const updateNote = (note) => {
   return {
     type: UPDATE_NOTE,
-    ...note
+    note
   }
 };
 
 export const deleteNote = (id) => {
- return {
-   type: DELETE_NOTE,
-   id
- }
+  return {
+    type: DELETE_NOTE,
+    id
+  }
 };
