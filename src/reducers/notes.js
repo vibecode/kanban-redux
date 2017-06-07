@@ -1,4 +1,4 @@
-import *  as types from '..actions/notes';
+import *  as types from '../actions/notes';
 
 const innitialState = [];
 
