@@ -19,8 +19,8 @@ class Notes extends Component {
                <Note onClick={onNoteClick.bind(null, id)}>
                  <Editable isEditing={isEditing}
                            value={task}
-                           onEdit={onEdit.bind(null, id)} />
-                 <button onClick={onDelete.bind(null, id)}>X</button>
+                           onEdit={onEdit.bind(null, id)}
+                           onDelete={onDelete.bind(null, id)} />
                </Note>
               </li>
           )}
