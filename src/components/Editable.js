@@ -58,3 +58,10 @@ class Editable extends Component {
 
 export default Editable;
 
+Editable.propTypes = {
+  isEditing: PropTypes.bool,
+  onDelete: PropTypes.func,
+  onEdit: PropTypes.func.isRequired,
+  onValueCLick: PropTypes.func.isRequired,
+  value: PropTypes.string.isRequired
+};
