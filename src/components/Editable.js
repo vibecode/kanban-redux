@@ -2,6 +2,14 @@ import React, { Component } from 'react';
 import autobind from 'autobind-decorator';
 import PropTypes from 'prop-types';
 
+const propTypes = {
+  isEditing: PropTypes.bool,
+  onDelete: PropTypes.func,
+  onEdit: PropTypes.func.isRequired,
+  onValueCLick: PropTypes.func.isRequired,
+  value: PropTypes.string.isRequired
+};
+
 class Editable extends Component {
   @autobind
   checkEnter(e) {
@@ -58,10 +66,4 @@ class Editable extends Component {
 
 export default Editable;
 
-Editable.propTypes = {
-  isEditing: PropTypes.bool,
-  onDelete: PropTypes.func,
-  onEdit: PropTypes.func.isRequired,
-  onValueCLick: PropTypes.func.isRequired,
-  value: PropTypes.string.isRequired
-};
+Editable.propTypes = propTypes;
