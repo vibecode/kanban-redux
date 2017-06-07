@@ -2,15 +2,15 @@ import React, { Component } from 'react';
 import autobind from 'autobind-decorator';
 import PropTypes from 'prop-types';
 
-const propTypes = {
-  isEditing: PropTypes.bool,
-  onDelete: PropTypes.func,
-  onEdit: PropTypes.func.isRequired,
-  onValueCLick: PropTypes.func.isRequired,
-  value: PropTypes.string.isRequired
-};
-
 class Editable extends Component {
+  static propTypes = {
+    isEditing: PropTypes.bool,
+    onDelete: PropTypes.func,
+    onEdit: PropTypes.func.isRequired,
+    onValueCLick: PropTypes.func.isRequired,
+    value: PropTypes.string.isRequired
+  };
+
   @autobind
   checkEnter(e) {
     if (e.key === 'Enter') {
@@ -42,7 +42,7 @@ class Editable extends Component {
     const onDelete = this.props.onDelete;
 
     return (
-        <div onClick={this.props.onValueClick}>
+        <div onClick={this.props.onValueCLick}>
           <span>{this.props.value}</span>
           {onDelete ? this.renderDelete() : null}
         </div>
@@ -65,5 +65,3 @@ class Editable extends Component {
 }
 
 export default Editable;
-
-Editable.propTypes = propTypes;

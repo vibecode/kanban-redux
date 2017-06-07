@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import Notes from '../components/Notes';
 import uuid from 'uuid';
+import HTML5Backend from 'react-dnd-html5-backend';
+import { DragDropContext } from 'react-dnd';
 import autobind from 'autobind-decorator';
 import './App.css';
 
@@ -81,11 +83,11 @@ class App extends Component {
           <button onClick={this.addNote}>+</button>
           <Notes notes={notes}
                  onDelete={this.deleteNote}
-                 onNoteClick={this.activateEditingMode}
+                 onValueClick={this.activateEditingMode}
                  onEdit={this.editNote} />
         </div>
     );
   }
 }
 
-export default App;
+export default DragDropContext(HTML5Backend)(App);
