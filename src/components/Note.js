@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { compose } from 'redux';
 import { DragSource, DropTarget } from 'react-dnd';
 import * as itemTypes from '../constants/itemTypes';
 
@@ -27,6 +26,13 @@ const noteTarget = {
   }
 };
 
+@DragSource(itemTypes.NOTE, noteSource, (connect, monitor) => ({
+  connectDragSource: connect.dragSource(),
+  isDragging: monitor.isDragging()
+}))
+@DropTarget(itemTypes.NOTE, noteTarget, (connect, monitor) => ({
+  connectDropTarget: connect.dropTarget()
+}))
 class Note extends Component {
   static propTypes = {
     children: PropTypes.node,
@@ -51,13 +57,4 @@ class Note extends Component {
   }
 }
 
-export default compose(
-    DragSource(itemTypes.NOTE, noteSource, (connect, monitor) => ({
-          connectDragSource: connect.dragSource(),
-          isDragging: monitor.isDragging()
-        })
-    ),
-    DropTarget(itemTypes.NOTE, noteTarget, (connect, monitor) => ({
-      connectDropTarget: connect.dropTarget()
-    }))
-)(Note);
+export default Note;
