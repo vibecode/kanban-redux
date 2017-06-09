@@ -10,16 +10,17 @@ class Notes extends Component {
     return (
         <ul>
           {notes.map(({ id, task, isEditing }) =>
-                <Note key={id}
-                      id={id}
-                      onMove={({sourceId, targetId}) =>
-                          console.log(`source: ${sourceId}, target: ${targetId}`)}>
-                  <Editable isEditing={isEditing}
-                            value={task}
-                            onValueCLick={onValueClick.bind(null, id)}
-                            onEdit={onEdit.bind(null, id)}
-                            onDelete={onDelete.bind(null, id)} />
-                </Note>
+              <Note
+                  key={id}
+                  id={id}
+                  onMove={({ sourceId, targetId }) =>
+                      console.log(`source: ${sourceId}, target: ${targetId}`)}>
+                <Editable isEditing={isEditing}
+                          value={task}
+                          onValueCLick={onValueClick.bind(null, id)}
+                          onEdit={onEdit.bind(null, id)}
+                          onDelete={onDelete.bind(null, id)} />
+              </Note>
           )}
         </ul>
     );

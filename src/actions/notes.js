@@ -1,29 +1,27 @@
 import uuid from 'uuid';
+import * as actionTypes from '../constants/actionTypes';
 
-export const CREATE_NOTE = 'CREATE_NOTE';
-export const UPDATE_NOTE = 'UPDATE_NOTE';
-export const DELETE_NOTE = 'DELETE_NOTE';
-
-export const createNote = (note) => {
+export const createNote = task => {
   return {
-    type: CREATE_NOTE,
-    note: {
-      id: uuid,
-      ...note
+    type: actionTypes.CREATE_NOTE,
+    payload: {
+      id: uuid.v4(),
+      isEditing: false,
+      task
     }
   }
 };
 
-export const updateNote = (note) => {
+export const updateNote = updatedNote => {
   return {
-    type: UPDATE_NOTE,
-    note
+    type: actionTypes.UPDATE_NOTE,
+    payload: updatedNote
   }
 };
 
-export const deleteNote = (id) => {
+export const deleteNote = id => {
   return {
-    type: DELETE_NOTE,
-    id
+    type: actionTypes.DELETE_NOTE,
+    payload: id
   }
 };

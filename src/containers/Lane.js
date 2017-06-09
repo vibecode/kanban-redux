@@ -1,9 +1,9 @@
 import Lane from '../components/Lane';
-import lanesActions from '../actions/lanes';
-import notesActions from '../actions/notes';
-import {connect} from 'react-redux';
-import {DragSource} from 'react-dnd';
-import {DropTarget} from 'react-dnd';
+import * as LaneActions from '../actions/lanes';
+import * as NoteActions from '../actions/notes';
+import { connect } from 'react-redux';
+import { DragSource } from 'react-dnd';
+import { DropTarget } from 'react-dnd';
 import * as itemTypes from '../constants/itemTypes';
 
 const laneSource = {
@@ -26,8 +26,11 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  onAddNote(laneId) {
+  onCreateNote(laneId) {
+    const newNote = NoteActions.createNote('New note');
 
+    dispatch(newNote);
+    dispatch(LaneActions.attachToLane(laneId, newNote.payload.id));
   },
   onDeleteNote(laneId, noteId) {
 

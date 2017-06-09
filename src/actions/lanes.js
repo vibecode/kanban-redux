@@ -12,3 +12,13 @@ export const  updateLane = updatedLane => {
 export const deleteLane = id => {
   return null;
 };
+
+export const attachToLane = (laneId, noteId) => {
+  return {
+    type: actionTypes.ATTACH_TO_LANE,
+    payload: {
+      laneId,
+      noteId
+    }
+  }
+};

@@ -1,20 +1,20 @@
-import *  as types from '../actions/notes';
+import * as actionTypes from '../constants/actionTypes';
 
-const innitialState = [];
+const initialState = [];
 
-export default (state = innitialState, action) => {
+export default (state = initialState, action) => {
   switch(action.type) {
-    case types.CREATE_NOTE:
-      return [...state, action.note];
-    case types.UPDATE_NOTE:
+    case actionTypes.CREATE_NOTE:
+      return [...state, action.payload];
+    case actionTypes.UPDATE_NOTE:
       return state.map(note => {
         if (action.note.id === note.id) {
-          return {...note, ...action.note}
+          return {...note, ...action.payload}
         }
 
         return note;
       });
-    case types.DELETE_NOTE:
+    case actionTypes.DELETE_NOTE:
       return state.filter(note => note.id !== action.id);
 
     default:

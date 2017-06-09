@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Notes from './Notes';
 import Editable from './Editable';
-import autobind from 'autobind-decorator';
+import autobind from 'autobind-decorator'
 import PropTypes from 'prop-types';
 
 class Lane extends Component {
@@ -11,7 +11,7 @@ class Lane extends Component {
     // connectDragSource: PropTypes.func.isRequired,
     // connectDropTarget: PropTypes.func.isRequired,
     // connectDragPreview: PropTypes.func.isRequired,
-    onAddNote: PropTypes.func.isRequired,
+    onCreateNote: PropTypes.func.isRequired,
     onEditNote: PropTypes.func.isRequired,
     onEditLane: PropTypes.func.isRequired,
     onDeleteNote: PropTypes.func.isRequired,
@@ -19,9 +19,10 @@ class Lane extends Component {
   };
 
   @autobind
-  handleAddNote() {
-    this.props.onAddNote(this.props.lane.id);
-  }
+  handleCreateNote() {
+    this.props.onCreateNote(this.props.lane.id);
+    console.log(this.props.lane.id)
+  };
 
   @autobind
   handleDeleteNote(noteId) {
@@ -48,7 +49,6 @@ class Lane extends Component {
     const laneNotes = lane.notes
                           .map(id => allNotes.find(note => note.id === id))
                           .filter(note => note);
-
     return (
         <div className="lane">
           <h2 className="lane-header">
@@ -74,7 +74,7 @@ class Lane extends Component {
               onDelete={this.handleDeleteNote}
               onMove={this.props.onMove} />
           <button className="add-note"
-                  onClick={this.handleAddNote}>
+                  onClick={this.handleCreateNote}>
             +
           </button>
         </div>
