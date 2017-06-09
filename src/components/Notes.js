@@ -1,13 +1,8 @@
 import React, { Component } from 'react';
-
-import { connect } from 'react-redux';
 import Note from './Note';
 import Editable from './Editable';
 
 class Notes extends Component {
-  constructor(props) {
-    super(props);
-  }
 
   render() {
     const { notes, onValueClick, onEdit, onDelete } = this.props;
@@ -15,7 +10,10 @@ class Notes extends Component {
     return (
         <ul>
           {notes.map(({ id, task, isEditing }) =>
-                <Note key={id}>
+                <Note key={id}
+                      id={id}
+                      onMove={({sourceId, targetId}) =>
+                          console.log(`source: ${sourceId}, target: ${targetId}`)}>
                   <Editable isEditing={isEditing}
                             value={task}
                             onValueCLick={onValueClick.bind(null, id)}
@@ -28,4 +26,4 @@ class Notes extends Component {
   }
 }
 
-export default connect()(Notes);
+export default (Notes);

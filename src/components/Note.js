@@ -38,7 +38,9 @@ class Note extends Component {
     children: PropTypes.node,
     connectDragSource: PropTypes.func.isRequired,
     connectDropTarget: PropTypes.func.isRequired,
-    isDragging: PropTypes.bool
+    isDragging: PropTypes.bool,
+    onMove: PropTypes.func.isRequired,
+    id: PropTypes.string.isRequired,
   };
 
   render() {
@@ -46,7 +48,7 @@ class Note extends Component {
       connectDragSource,
       connectDropTarget,
       isDragging,
-      children
+      children,
     } = this.props;
 
     return connectDragSource(
