@@ -33,7 +33,11 @@ const mapDispatchToProps = dispatch => ({
     dispatch(LaneActions.attachToLane(laneId, newNote.payload.id));
   },
   onDeleteNote(laneId, noteId) {
+    dispatch(NoteActions.deleteNote(noteId));
 
+    if(laneId) {
+      dispatch(LaneActions.detachFromLane(laneId, noteId));
+    }
   },
   onEditNote(noteId, value) {
 

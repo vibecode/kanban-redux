@@ -18,7 +18,7 @@ export default (state = defaultState, action) => {
   switch (action.type) {
     case actionTypes.CREATE_LANE:
       return null;
-    case actionTypes.ATTACH_TO_LANE:
+    case actionTypes.ATTACH_TO_LANE: {
       const { laneId, noteId } = action.payload;
 
       return state.map(lane => {
@@ -40,6 +40,21 @@ export default (state = defaultState, action) => {
 
         return lane;
       });
+    }
+    case actionTypes.DETACH_FROM_LANE: {
+      const { laneId, noteId } = action.payload;
+
+      return state.map(lane => {
+        if (lane.id === laneId) {
+          return {
+            ...lane,
+            notes: lane.notes.filter(id => id !== noteId)
+          }
+        }
+        return lane;
+      });
+    }
+
     default:
       return state;
   }

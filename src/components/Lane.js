@@ -26,7 +26,7 @@ class Lane extends Component {
 
   @autobind
   handleDeleteNote(noteId) {
-    this.propsOnDeleteNote(this.props.lane.id, noteId);
+    this.props.onDeleteNote(this.props.lane.id, noteId);
   }
 
   @autobind
