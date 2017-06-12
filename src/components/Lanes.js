@@ -14,12 +14,14 @@ class Lanes extends Component {
     const { onEditLane, onDeleteLane, onMoveLane } = this.props;
 
     const lanes = this.props.lanes.map(lane => {
-      return <Lane
-          key={lane.id}
-          lane={lane}
-          onEditLane={onEditLane}
-          onDeleteLane={onDeleteLane}
-          onMoveLane={onMoveLane} />
+      return (
+          <Lane
+              key={lane.id}
+              lane={lane}
+              onEditLane={onEditLane}
+              onDeleteLane={onDeleteLane}
+              onMoveLane={onMoveLane} />
+      )
     });
 
     return (

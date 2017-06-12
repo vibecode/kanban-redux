@@ -13,7 +13,7 @@ class Notes extends Component {
   };
 
   render() {
-    const { notes, onValueClick, onEdit, onDelete } = this.props;
+    const { notes, onValueClick, onEditNote, onDeleteNote, onMoveNote } = this.props;
 
     return (
         <ul>
@@ -21,14 +21,14 @@ class Notes extends Component {
               <Note
                   key={id}
                   id={id}
-                  onMove={({ sourceId, targetId }) =>
-                      console.log(`source: ${sourceId}, target: ${targetId}`)}>
-                <Editable isEditing={isEditing}
-                          id={id}
-                          value={task}
-                          onValueClick={onValueClick}
-                          onEdit={onEdit}
-                          onDelete={onDelete} />
+                  onMoveNote={onMoveNote}>
+                <Editable
+                    isEditing={isEditing}
+                    id={id}
+                    value={task}
+                    onValueClick={onValueClick}
+                    onEdit={onEditNote}
+                    onDelete={onDeleteNote} />
               </Note>
           )}
         </ul>

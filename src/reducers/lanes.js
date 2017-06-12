@@ -1,4 +1,5 @@
 import * as actionTypes from '../constants/actionTypes';
+import update from 'immutability-helper';
 import uuid from 'uuid';
 
 const defaultState = [
@@ -61,6 +62,21 @@ export default (state = defaultState, action) => {
           }
         }
         return lane;
+      });
+    }
+
+    case actionTypes.MOVE_LANE: {
+      const sourceId = action.payload.sourceId;
+      const targetId = action.payload.targetId;
+      const sourceLane = state.find(lane => lane.id === sourceId);
+      const sourceLaneIndex = state.findIndex(lane => lane.id === sourceId);
+      const targetLaneIndex = state.findIndex(lane => lane.id === targetId);
+
+      return update(state, {
+        $splice: [
+          [sourceLaneIndex, 1],
+          [targetLaneIndex, 0, sourceLane],
+        ],
       });
     }
 

@@ -27,6 +27,7 @@ class Editable extends Component {
       this.props.onEdit(this.props.id, value);
     }
   }
+
   @autobind
   handleValueClick() {
     this.props.onValueClick(this.props.id);
@@ -38,14 +39,15 @@ class Editable extends Component {
   }
 
   renderEdit() {
-    return <input
-        //set selection to the end
-        ref={e => e ? e.selectionEnd = this.props.value.length : null}
-        type="text"
-        autoFocus={true}
-        defaultValue={this.props.value}
-        onBlur={this.handleFinishEdit}
-        onKeyPress={this.checkEnter} />
+    return (
+        <input
+            ref={e => e ? e.selectionEnd = this.props.value.length : null}
+            type="text"
+            autoFocus={true}
+            defaultValue={this.props.value}
+            onBlur={this.handleFinishEdit}
+            onKeyPress={this.checkEnter} />
+    )
   }
 
   renderValue() {

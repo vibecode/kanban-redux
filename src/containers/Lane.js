@@ -2,24 +2,6 @@ import Lane from '../components/Lane';
 import * as LaneActions from '../actions/lanes';
 import * as NoteActions from '../actions/notes';
 import { connect } from 'react-redux';
-import { DragSource } from 'react-dnd';
-import { DropTarget } from 'react-dnd';
-import * as itemTypes from '../constants/itemTypes';
-
-const laneSource = {
-  beginDrag(props) {
-    return {
-      id: props.lane.id
-    }
-  },
-  isDragging(props, monitor) {
-    return props.id === monitor.getItem().id;
-  }
-};
-
-const laneTarget = {
-  //TODO: laneTarget
-};
 
 const mapStateToProps = state => ({
   allNotes: state.notes
@@ -35,7 +17,7 @@ const mapDispatchToProps = dispatch => ({
   onDeleteNote(laneId, noteId) {
     dispatch(NoteActions.deleteNote(noteId));
 
-    if(laneId) {
+    if (laneId) {
       dispatch(LaneActions.detachFromLane(laneId, noteId));
     }
   },
@@ -53,10 +35,10 @@ const mapDispatchToProps = dispatch => ({
     dispatch(NoteActions.updateNote(updatedNote));
   },
   onMoveNote(sourceId, targetId) {
-
+    dispatch(LaneActions.move('note', sourceId, targetId));
   },
   attachToLane(laneId, noteId) {
-
+    dispatch(LaneActions.attachToLane(laneId, noteId));
   }
 });
 

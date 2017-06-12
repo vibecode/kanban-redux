@@ -47,3 +47,13 @@ export const detachFromLane = (laneId, noteId) => {
     }
   }
 };
+
+export const move = (target, sourceId, targetId) => {
+  return {
+    type: target === 'note' ? actionTypes.MOVE_NOTE : actionTypes.MOVE_LANE,
+    payload: {
+      sourceId,
+      targetId,
+    },
+  };
+};

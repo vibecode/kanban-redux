@@ -1,13 +1,21 @@
 import React, { Component } from 'react';
 import Lanes from '../components/Lanes';
 import { connect } from 'react-redux';
-import * as laneActions from '../actions/lanes';
+import * as LaneActions from '../actions/lanes';
 import HTML5Backend from 'react-dnd-html5-backend';
 import { DragDropContext } from 'react-dnd';
-import autobind from 'autobind-decorator';
+import PropTypes from 'prop-types';
 import './App.css';
 
 class App extends Component {
+  static propTypes = {
+    lanes: PropTypes.array.isRequired,
+    onCreateLane: PropTypes.func.isRequired,
+    onDeleteLane: PropTypes.func.isRequired,
+    onEditLane: PropTypes.func.isRequired,
+    onMoveLane: PropTypes.func.isRequired,
+    onReset: PropTypes.func.isRequired,
+  };
 
   render() {
     return (
@@ -26,7 +34,7 @@ const mapStateToProps = state => ({ lanes: state.lanes });
 
 const mapDispatchToProps = dispatch => ({
   onCreateLane() {
-    dispatch(laneActions.createLane('New lane'));
+    dispatch(LaneActions.createLane('New lane'));
   },
   onEditLane(laneId, name) {
     const updatedLane = {
@@ -40,13 +48,13 @@ const mapDispatchToProps = dispatch => ({
       updatedLane.isEditing = true;
     }
 
-    dispatch(laneActions.updateLane(updatedLane));
+    dispatch(LaneActions.updateLane(updatedLane));
   },
   onDeleteLane(laneId) {
-    dispatch(laneActions.deleteLane(laneId));
+    dispatch(LaneActions.deleteLane(laneId));
   },
-  onMoveLane() {
-    return null;
+  onMoveLane(sourceId, targetId) {
+     dispatch(LaneActions.move('lane', sourceId, targetId));
   }
 });
 
