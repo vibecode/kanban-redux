@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Lanes from '../components/Lanes';
 import { connect } from 'react-redux';
-import lanesActions from '../actions/lanes';
+import * as laneActions from '../actions/lanes';
 import HTML5Backend from 'react-dnd-html5-backend';
 import { DragDropContext } from 'react-dnd';
 import autobind from 'autobind-decorator';
@@ -12,6 +12,7 @@ class App extends Component {
   render() {
     return (
         <div>
+          <button className="add-lane" onClick={this.props.onCreateLane}>add lane</button>
           <Lanes lanes={this.props.lanes}
                  onEditLane={this.props.onEditLane}
                  onDeleteLane={this.props.onDeleteLane}
@@ -25,13 +26,24 @@ const mapStateToProps = state => ({ lanes: state.lanes });
 
 const mapDispatchToProps = dispatch => ({
   onCreateLane() {
-    return null;
+    dispatch(laneActions.createLane('New lane'));
   },
-  onEditLane() {
-    return null;
+  onEditLane(laneId, name) {
+    const updatedLane = {
+      id: laneId,
+    };
+
+    if(name) {
+      updatedLane.name = name;
+      updatedLane.isEditing = false;
+    } else {
+      updatedLane.isEditing = true;
+    }
+
+    dispatch(laneActions.updateLane(updatedLane));
   },
-  onDeleteLane() {
-    return null;
+  onDeleteLane(laneId) {
+    dispatch(laneActions.deleteLane(laneId));
   },
   onMoveLane() {
     return null;

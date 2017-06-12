@@ -17,7 +17,16 @@ const defaultState = [
 export default (state = defaultState, action) => {
   switch (action.type) {
     case actionTypes.CREATE_LANE:
-      return null;
+      return [...state, action.payload];
+    case actionTypes.UPDATE_LANE:
+      return state.map(lane => {
+        if (lane.id === action.payload.id) {
+          return { ...lane, ...action.payload }
+        }
+        return lane;
+      });
+    case actionTypes.DELETE_LANE:
+      return state.filter(lane => lane.id !== action.payload.id);
     case actionTypes.ATTACH_TO_LANE: {
       const { laneId, noteId } = action.payload;
 

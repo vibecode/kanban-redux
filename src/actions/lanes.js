@@ -2,15 +2,30 @@ import uuid from 'uuid';
 import * as actionTypes from '../constants/actionTypes';
 
 export const createLane = name => {
-  return null;
+  return {
+    type: actionTypes.CREATE_LANE,
+    payload: {
+      id: uuid.v4(),
+      name,
+      notes: []
+    }
+  };
 };
 
 export const updateLane = updatedLane => {
-  return null;
+  return {
+    type: actionTypes.UPDATE_LANE,
+    payload: updatedLane
+  };
 };
 
 export const deleteLane = id => {
-  return null;
+  return {
+    type: actionTypes.DELETE_LANE,
+    payload: {
+      id
+    }
+  }
 };
 
 export const attachToLane = (laneId, noteId) => {

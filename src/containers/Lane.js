@@ -40,8 +40,6 @@ const mapDispatchToProps = dispatch => ({
     }
   },
   onEditNote(noteId, value) {
-    console.log(noteId);
-    console.log(value);
     const updatedNote = {
       id: noteId
     };
@@ -52,7 +50,6 @@ const mapDispatchToProps = dispatch => ({
     } else {
       updatedNote.isEditing = true;
     }
-    console.log(updatedNote);
     dispatch(NoteActions.updateNote(updatedNote));
   },
   onMoveNote(sourceId, targetId) {
