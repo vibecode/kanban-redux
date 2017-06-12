@@ -21,7 +21,6 @@ class Lane extends Component {
   @autobind
   handleCreateNote() {
     this.props.onCreateNote(this.props.lane.id);
-    console.log(this.props.lane.id)
   };
 
   @autobind
@@ -41,6 +40,9 @@ class Lane extends Component {
     const {
       lane,
       allNotes,
+      onEditLane,
+      onEditNote,
+      onMove,
       connectDragSource,
       connectDropTarget,
       connectDragPreview,
@@ -56,8 +58,8 @@ class Lane extends Component {
                 id={lane.id}
                 isEditing={lane.isEditing}
                 value={lane.name}
-                onEdit={this.props.onEditLane}
-                onValueCLick={this.props.onEditLane} />
+                onEdit={onEditLane}
+                onValueClick={onEditLane} />
 
             <button className="lane-delete"
                     onClick={this.handleDeleteLane}>
@@ -69,10 +71,10 @@ class Lane extends Component {
 
           <Notes
               notes={laneNotes}
-              onValueClick={this.props.onEditNote}
-              onEdit={this.props.onEditNote}
+              onValueClick={onEditNote}
+              onEdit={onEditNote}
               onDelete={this.handleDeleteNote}
-              onMove={this.props.onMove} />
+              onMove={onMove} />
           <button className="add-note"
                   onClick={this.handleCreateNote}>
             +

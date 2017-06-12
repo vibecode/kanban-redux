@@ -8,7 +8,7 @@ export default (state = initialState, action) => {
       return [...state, action.payload];
     case actionTypes.UPDATE_NOTE:
       return state.map(note => {
-        if (action.note.id === note.id) {
+        if (action.payload.id === note.id) {
           return {...note, ...action.payload}
         }
 

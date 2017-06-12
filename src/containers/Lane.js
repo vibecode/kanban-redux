@@ -40,7 +40,20 @@ const mapDispatchToProps = dispatch => ({
     }
   },
   onEditNote(noteId, value) {
+    console.log(noteId);
+    console.log(value);
+    const updatedNote = {
+      id: noteId
+    };
 
+    if (value) {
+      updatedNote.task = value;
+      updatedNote.isEditing = false;
+    } else {
+      updatedNote.isEditing = true;
+    }
+    console.log(updatedNote);
+    dispatch(NoteActions.updateNote(updatedNote));
   },
   onMoveNote(sourceId, targetId) {
 

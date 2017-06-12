@@ -16,10 +16,11 @@ class Notes extends Component {
                   onMove={({ sourceId, targetId }) =>
                       console.log(`source: ${sourceId}, target: ${targetId}`)}>
                 <Editable isEditing={isEditing}
+                          id={id}
                           value={task}
-                          onValueCLick={onValueClick.bind(null, id)}
-                          onEdit={onEdit.bind(null, id)}
-                          onDelete={onDelete.bind(null, id)} />
+                          onValueClick={onValueClick}
+                          onEdit={onEdit}
+                          onDelete={onDelete} />
               </Note>
           )}
         </ul>

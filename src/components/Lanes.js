@@ -14,7 +14,6 @@ class Lanes extends Component {
     const { onEditLane, onDeleteLane, onMoveLane } = this.props;
 
     const lanes = this.props.lanes.map(lane => {
-      console.log(lane);
       return <Lane
           key={lane.id}
           lane={lane}
