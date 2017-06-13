@@ -84,16 +84,18 @@ class Lane extends Component {
       onMoveNote,
       connectDragSource,
       connectDropTarget,
-      connectDragPreview,
     } = this.props;
 
     const laneNotes = lane.notes
                           .map(id => allNotes.find(note => note.id === id))
                           .filter(note => note);
-    return connectDragPreview(
+    return connectDragSource(
         connectDropTarget(
             <div className={styles.lane}>
-              {connectDragSource(
+              <button
+                  className={styles.deleteLane}
+                  onClick={this.handleDeleteLane} />
+
               <h2 className={styles.laneHeader}>
                 <Editable
                     id={lane.id}
@@ -101,14 +103,7 @@ class Lane extends Component {
                     value={lane.name}
                     onEdit={onEditLane}
                     onValueClick={onEditLane} />
-
-                <button
-                    className="lane-delete"
-                    onClick={this.handleDeleteLane}>
-                  X
-                </button>
               </h2>
-              )}
               <button
                   className={styles.addNote}
                   onClick={this.handleCreateNote}>
