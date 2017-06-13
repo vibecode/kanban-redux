@@ -93,7 +93,8 @@ class Lane extends Component {
     return connectDragPreview(
         connectDropTarget(
             <div className={styles.lane}>
-              <h2 className="lane-header">
+              {connectDragSource(
+              <h2 className={styles.laneHeader}>
                 <Editable
                     id={lane.id}
                     isEditing={lane.isEditing}
@@ -106,22 +107,19 @@ class Lane extends Component {
                     onClick={this.handleDeleteLane}>
                   X
                 </button>
-
-                {connectDragSource(<button className="lane-drag-btn">drag me</button>)}
               </h2>
-
+              )}
+              <button
+                  className={styles.addNote}
+                  onClick={this.handleCreateNote}>
+                +
+              </button>
               <Notes
                   notes={laneNotes}
                   onValueClick={onEditNote}
                   onEditNote={onEditNote}
                   onDeleteNote={this.handleDeleteNote}
                   onMoveNote={onMoveNote} />
-
-              <button
-                  className="add-note"
-                  onClick={this.handleCreateNote}>
-                +
-              </button>
             </div>
         )
     );

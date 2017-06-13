@@ -1,0 +1,12 @@
+.input {
+  width: 100%;
+  border: 1px solid #EFF0F1;
+  outline: none;
+  border-radius: 3px;
+  font-size: 16px;
+  padding: 6px;
+}
+
+.valueContainer {
+  overflow-wrap: break-word;
+}

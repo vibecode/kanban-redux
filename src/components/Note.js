@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { DragSource, DropTarget } from 'react-dnd';
 import * as itemTypes from '../constants/itemTypes';
+import styles from './Note.css';
 
 const noteSource = {
   beginDrag(props) {
@@ -43,6 +44,8 @@ class Note extends Component {
     id: PropTypes.string.isRequired,
   };
 
+
+
   render() {
     const {
       connectDragSource,
@@ -53,7 +56,11 @@ class Note extends Component {
 
     return connectDragSource(
         connectDropTarget(
-            <li style={{ opacity: isDragging ? 0.3 : 1 }}>{children}</li>
+            <div className={styles.noteContainer}>
+              <li className={styles.note} style={{opacity: isDragging ? 0 : 1}}>
+                {children}
+              </li>
+            </div>
         )
     );
   }

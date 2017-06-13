@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import autobind from 'autobind-decorator';
 import PropTypes from 'prop-types';
+import styles from './Editable.css';
 
 class Editable extends Component {
   static propTypes = {
@@ -41,6 +42,7 @@ class Editable extends Component {
   renderEdit() {
     return (
         <input
+            className={styles.input}
             ref={e => e ? e.selectionEnd = this.props.value.length : null}
             type="text"
             autoFocus={true}
@@ -54,7 +56,9 @@ class Editable extends Component {
     const onDelete = this.props.onDelete;
 
     return (
-        <div onClick={this.handleValueClick}>
+        <div
+            className={styles.valueContainer}
+            onClick={this.handleValueClick}>
           <span>{this.props.value}</span>
           {onDelete ? this.renderDelete() : null}
         </div>

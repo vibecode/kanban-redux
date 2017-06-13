@@ -1,4 +1,40 @@
 .lane {
-  float: left;
-  width: 150px;
+  display: flex;
+  flex-direction: column;
+  width: calc(95% / 4);
+  height: 100%;
+  margin-right: 1%;
+  margin-bottom: 10px;
+  padding: 10px;
+  border-radius: 6px;
+  background-color: #EFF0F1;
+}
+
+.lane:nth-child(4n+1) {
+  margin-left: 1%;
+}
+
+.laneHeader {
+  display: flex;
+  margin-top: 0;
+  font-size: 18px;
+}
+
+.addNote {
+  min-width: 50px;
+  height: 30px;
+  margin-bottom: 10px;
+  font-size: 24px;
+  line-height: 12px;
+  box-shadow: 0 1px 3px 0 rgba(0,0,0,0.15);
+  border-radius: 3px;
+  border: none;
+  background-color: #fff;
+  color: #b9bcc0;
+  transition: color 0.2s, box-shadow 0.2s;
+}
+
+.addNote:hover  {
+  color: #900cff;
+  box-shadow: 0 0 0 2px #900cff;
 }

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Lane from '../containers/Lane';
 import PropTypes from 'prop-types';
+import styles from './Lanes.css';
 
 class Lanes extends Component {
   static propTypes = {
@@ -25,7 +26,7 @@ class Lanes extends Component {
     });
 
     return (
-        <div className="lanes">
+        <div className={styles.lanes}>
           {lanes}
         </div>
     );

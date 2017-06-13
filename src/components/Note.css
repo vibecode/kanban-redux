@@ -1,0 +1,19 @@
+.note {
+  min-height: 70px;
+  margin-bottom: 10px;
+  padding: 15px;
+  border-radius: 3px;
+  background-color: #fff;
+  box-shadow: 0 1px 3px 0 rgba(0,0,0,0.15);
+  transition: box-shadow 0.1s ease, transform 0.1s ease;
+}
+
+.note:hover {
+  box-shadow: 0 5px 10px 0 rgba(0,0,0,0.1);
+  transform: translateY(-2px);
+}
+
+.noteContainer {
+  border-radius: 3px;
+  background-color: #e6e6e6;
+}
