@@ -6,6 +6,7 @@ import { DragSource } from 'react-dnd';
 import { DropTarget } from 'react-dnd';
 import * as itemTypes from '../constants/itemTypes';
 import PropTypes from 'prop-types';
+import styles from './Lane.css';
 
 const laneSource = {
   beginDrag(props) {
@@ -91,7 +92,7 @@ class Lane extends Component {
                           .filter(note => note);
     return connectDragPreview(
         connectDropTarget(
-            <div className="lane">
+            <div className={styles.lane}>
               <h2 className="lane-header">
                 <Editable
                     id={lane.id}
