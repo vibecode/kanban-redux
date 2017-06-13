@@ -7,7 +7,7 @@ const noteSource = {
   beginDrag(props) {
     return {
       id: props.id
-    }
+    };
   },
   isDragging(props, monitor) {
     return props.id === monitor.getItem().id;
@@ -21,7 +21,7 @@ const noteTarget = {
     const sourceId = sourceProps.id;
 
     if (sourceId !== targetId) {
-      targetProps.onMoveNote({ sourceId, targetId });
+      targetProps.onMoveNote(sourceId, targetId);
     }
   }
 };
@@ -39,7 +39,7 @@ class Note extends Component {
     connectDragSource: PropTypes.func.isRequired,
     connectDropTarget: PropTypes.func.isRequired,
     isDragging: PropTypes.bool,
-    onMove: PropTypes.func.isRequired,
+    onMoveNote: PropTypes.func.isRequired,
     id: PropTypes.string.isRequired,
   };
 

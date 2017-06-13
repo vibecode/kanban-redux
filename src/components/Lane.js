@@ -11,7 +11,7 @@ const laneSource = {
   beginDrag(props) {
     return {
       id: props.lane.id
-    }
+    };
   },
   isDragging(props, monitor) {
     return props.id === monitor.getItem().id;

@@ -21,14 +21,14 @@ class Lanes extends Component {
               onEditLane={onEditLane}
               onDeleteLane={onDeleteLane}
               onMoveLane={onMoveLane} />
-      )
+      );
     });
 
     return (
         <div className="lanes">
           {lanes}
         </div>
-    )
+    );
   }
 }
 

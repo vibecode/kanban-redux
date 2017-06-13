@@ -47,7 +47,7 @@ class Editable extends Component {
             defaultValue={this.props.value}
             onBlur={this.handleFinishEdit}
             onKeyPress={this.checkEnter} />
-    )
+    );
   }
 
   renderValue() {
@@ -58,11 +58,11 @@ class Editable extends Component {
           <span>{this.props.value}</span>
           {onDelete ? this.renderDelete() : null}
         </div>
-    )
+    );
   }
 
   renderDelete() {
-    return <button onClick={this.handleDelete}>X</button>
+    return <button onClick={this.handleDelete}>X</button>;
   }
 
   render() {
@@ -71,7 +71,7 @@ class Editable extends Component {
         <div>
           {isEditing ? this.renderEdit() : this.renderValue()}
         </div>
-    )
+    );
   }
 }
 

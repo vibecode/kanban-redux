@@ -22,7 +22,7 @@ export default (state = defaultState, action) => {
     case actionTypes.UPDATE_LANE:
       return state.map(lane => {
         if (lane.id === action.payload.id) {
-          return { ...lane, ...action.payload }
+          return { ...lane, ...action.payload };
         }
         return lane;
       });
@@ -38,14 +38,14 @@ export default (state = defaultState, action) => {
           return {
             ...lane,
             notes: lane.notes.filter(id => id !== noteId)
-          }
+          };
         }
 
         if (lane.id === laneId) {
           return {
             ...lane,
             notes: [...lane.notes, noteId]
-          }
+          };
         }
 
         return lane;
@@ -59,15 +59,63 @@ export default (state = defaultState, action) => {
           return {
             ...lane,
             notes: lane.notes.filter(id => id !== noteId)
-          }
+          };
         }
         return lane;
       });
     }
 
+    case actionTypes.MOVE_NOTE: {
+      const { sourceId, targetId } = action.payload;
+
+      const sourceLane = state.filter(lane => ~lane.notes.indexOf(sourceId))[0];
+      const targetLane = state.filter(lane => ~lane.notes.indexOf(targetId))[0];
+
+      const sourceNoteIndex = sourceLane.notes.indexOf(sourceId);
+      const targetNoteIndex = targetLane.notes.indexOf(targetId);
+
+      if (sourceLane.id === targetLane.id) {
+        return state.map(lane => {
+          if (lane.id === sourceLane.id) {
+            return {
+              ...lane,
+              notes: update(sourceLane.notes, {
+                $splice: [
+                  [sourceNoteIndex, 1],
+                  [targetNoteIndex, 0, sourceId]
+                ]
+              })
+            };
+          }
+
+          return lane;
+        });
+      }
+
+      return state.map(lane => {
+        if (lane.id === sourceLane.id) {
+          return {
+            ...lane,
+            notes: update(lane.notes, {
+              $splice: [[sourceNoteIndex, 1]]
+            })
+          };
+        }
+
+        if (lane.id === targetLane.id) {
+          return {
+            notes: update(lane.notes, {
+              $splice: [[targetNoteIndex, 0, sourceId]]
+            })
+          };
+        }
+
+        return lane;
+      });
+    }
+
     case actionTypes.MOVE_LANE: {
-      const sourceId = action.payload.sourceId;
-      const targetId = action.payload.targetId;
+      const { sourceId, targetId } = action.payload;
       const sourceLane = state.find(lane => lane.id === sourceId);
       const sourceLaneIndex = state.findIndex(lane => lane.id === sourceId);
       const targetLaneIndex = state.findIndex(lane => lane.id === targetId);
@@ -83,4 +131,4 @@ export default (state = defaultState, action) => {
     default:
       return state;
   }
-}
+};

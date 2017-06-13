@@ -9,7 +9,7 @@ export default (state = initialState, action) => {
     case actionTypes.UPDATE_NOTE:
       return state.map(note => {
         if (action.payload.id === note.id) {
-          return {...note, ...action.payload}
+          return {...note, ...action.payload};
         }
 
         return note;
@@ -20,4 +20,4 @@ export default (state = initialState, action) => {
     default:
       return state;
   }
-}
+};

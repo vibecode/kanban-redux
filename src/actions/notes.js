@@ -9,19 +9,19 @@ export const createNote = task => {
       isEditing: false,
       task
     }
-  }
+  };
 };
 
 export const updateNote = updatedNote => {
   return {
     type: actionTypes.UPDATE_NOTE,
     payload: updatedNote
-  }
+  };
 };
 
 export const deleteNote = id => {
   return {
     type: actionTypes.DELETE_NOTE,
     payload: id
-  }
+  };
 };
