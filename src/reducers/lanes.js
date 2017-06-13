@@ -104,6 +104,7 @@ export default (state = defaultState, action) => {
 
         if (lane.id === targetLane.id) {
           return {
+            ...lane,
             notes: update(lane.notes, {
               $splice: [[targetNoteIndex, 0, sourceId]]
             })
