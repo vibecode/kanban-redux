@@ -7,7 +7,6 @@ class Editable extends Component {
   static propTypes = {
     isEditing: PropTypes.bool,
     id: PropTypes.string.isRequired,
-    onDelete: PropTypes.func,
     onEdit: PropTypes.func.isRequired,
     onValueClick: PropTypes.func.isRequired,
     value: PropTypes.string.isRequired
@@ -34,11 +33,6 @@ class Editable extends Component {
     this.props.onValueClick(this.props.id);
   }
 
-  @autobind
-  handleDelete() {
-    this.props.onDelete(this.props.id);
-  }
-
   renderEdit() {
     return (
         <input
@@ -53,22 +47,15 @@ class Editable extends Component {
   }
 
   renderValue() {
-    const onDelete = this.props.onDelete;
-
     return (
         <div
             className={styles.valueContainer}
             onClick={this.handleValueClick}>
           <span>{this.props.value}</span>
-          {onDelete ? this.renderDelete() : null}
         </div>
     );
   }
-
-  renderDelete() {
-    return <button onClick={this.handleDelete}>X</button>;
-  }
-
+  
   render() {
     const { isEditing } = this.props;
     return (

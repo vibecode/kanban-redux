@@ -22,14 +22,14 @@ class Notes extends Component {
               <Note
                   key={id}
                   id={id}
+                  onDeleteNote={onDeleteNote}
                   onMoveNote={onMoveNote}>
                 <Editable
                     isEditing={isEditing}
                     id={id}
                     value={task}
                     onValueClick={onValueClick}
-                    onEdit={onEditNote}
-                    onDelete={onDeleteNote} />
+                    onEdit={onEditNote} />
               </Note>
           )}
         </ul>

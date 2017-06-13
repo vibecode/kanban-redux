@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import autobind from 'autobind-decorator';
 import { DragSource, DropTarget } from 'react-dnd';
 import * as itemTypes from '../constants/itemTypes';
 import styles from './Note.css';
@@ -41,10 +42,14 @@ class Note extends Component {
     connectDropTarget: PropTypes.func.isRequired,
     isDragging: PropTypes.bool,
     onMoveNote: PropTypes.func.isRequired,
+    onDeleteNote: PropTypes.func.isRequired,
     id: PropTypes.string.isRequired,
   };
 
-
+  @autobind
+  handleDelete() {
+    this.props.onDeleteNote(this.props.id);
+  }
 
   render() {
     const {
@@ -60,6 +65,7 @@ class Note extends Component {
               <li className={styles.note} style={{opacity: isDragging ? 0 : 1}}>
                 {children}
               </li>
+              <button onClick={this.handleDelete}>X</button>
             </div>
         )
     );
