@@ -8,12 +8,52 @@
   transition: box-shadow 0.1s ease, transform 0.1s ease;
 }
 
-.note:hover {
+.noteContainer {
+  position: relative;
+  border-radius: 3px;
+  background-color: #e6e6e6;
+}
+
+.noteContainer:hover .note {
   box-shadow: 0 5px 10px 0 rgba(0,0,0,0.1);
   transform: translateY(-2px);
 }
 
-.noteContainer {
-  border-radius: 3px;
-  background-color: #e6e6e6;
+.deleteNote {
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  top: 3px;
+  right: 5px;
+  border: none;
+  background-color: transparent;
+  opacity: 0;
+  transition: 0.2s opacity;
+}
+
+.deleteNote:before, .deleteNote:after {
+  position: absolute;
+  top: 0;
+  left: 7px;
+  content: ' ';
+  height: 14px;
+  width: 1px;
+  background-color: #b9bcc0;
+  transition: 0.2s background-color;
+}
+
+.deleteNote::before {
+  transform: rotate(45deg);
+}
+
+.deleteNote::after {
+  transform: rotate(-45deg);
+}
+
+.deleteNote:hover::before, .deleteNote:hover::after {
+  background-color: #900cff;
+}
+
+.noteContainer:hover .deleteNote {
+  opacity: 1;
 }

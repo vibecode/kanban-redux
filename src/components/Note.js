@@ -65,7 +65,9 @@ class Note extends Component {
               <li className={styles.note} style={{opacity: isDragging ? 0 : 1}}>
                 {children}
               </li>
-              <button onClick={this.handleDelete}>X</button>
+              <button
+                  className={styles.deleteNote}
+                  onClick={this.handleDelete}/>
             </div>
         )
     );
