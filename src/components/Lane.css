@@ -75,7 +75,7 @@
   border: none;
   background-color: #fff;
   color: #b9bcc0;
-  transition: color 0.2s, box-shadow 0.2s;
+  transition:  0.2s box-shadow, 0.2s color;
 }
 
 .addNote:hover  {

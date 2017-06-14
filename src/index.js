@@ -4,6 +4,7 @@ import { Provider } from 'react-redux';
 import App from './containers/App';
 import configStore from './store/configStore';
 import localforage from 'localforage';
+import throttle from 'lodash/throttle';
 import registerServiceWorker from './registerServiceWorker';
 import './index.css';
 
@@ -23,9 +24,9 @@ localStore.getItem('state')
                   <App />
                 </Provider>,
                 document.getElementById('root'));
-            store.subscribe(() => {
+            store.subscribe(throttle(() => {
               localStore.setItem('state', store.getState());
-            });
+            }, 1000));
           });
 
 registerServiceWorker();
