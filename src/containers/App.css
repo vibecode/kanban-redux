@@ -1,0 +1,15 @@
+.topContainer {
+  padding: 20px 10px;
+}
+
+.addLane {
+  background: transparent;
+  border: none;
+  font-size: 22px;
+  color: #b9bcc0;
+  transition: 0.2s color;
+}
+
+.addLane:hover {
+  color: #900cff;
+}

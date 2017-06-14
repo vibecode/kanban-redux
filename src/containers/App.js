@@ -6,7 +6,7 @@ import * as Strings from '../constants/strings';
 import HTML5Backend from 'react-dnd-html5-backend';
 import { DragDropContext } from 'react-dnd';
 import PropTypes from 'prop-types';
-import './App.css';
+import styles from './App.css';
 
 class App extends Component {
   static propTypes = {
@@ -21,7 +21,9 @@ class App extends Component {
   render() {
     return (
         <div>
-          <button className="add-lane" onClick={this.props.onCreateLane}>add lane</button>
+          <div className={styles.topContainer}>
+            <button className={styles.addLane} onClick={this.props.onCreateLane}>+ Add column</button>
+          </div>
           <Lanes lanes={this.props.lanes}
                  onEditLane={this.props.onEditLane}
                  onDeleteLane={this.props.onDeleteLane}
