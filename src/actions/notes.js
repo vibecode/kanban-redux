@@ -6,7 +6,7 @@ export const createNote = task => {
     type: actionTypes.CREATE_NOTE,
     payload: {
       id: uuid.v4(),
-      isEditing: false,
+      isEditing: true,
       task
     }
   };

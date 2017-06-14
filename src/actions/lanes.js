@@ -7,7 +7,8 @@ export const createLane = name => {
     payload: {
       id: uuid.v4(),
       name,
-      notes: []
+      notes: [],
+      isEditing: true
     }
   };
 };

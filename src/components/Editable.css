@@ -8,6 +8,10 @@
   padding: 6px;
 }
 
+.input::selection {
+  background-color: rgba(144, 12, 255, 0.11);
+}
+
 .valueContainer {
   overflow-wrap: break-word;
 }
