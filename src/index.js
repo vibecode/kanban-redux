@@ -3,30 +3,42 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import App from './containers/App';
 import configStore from './store/configStore';
-import localforage from 'localforage';
 import throttle from 'lodash/throttle';
 import registerServiceWorker from './registerServiceWorker';
 import './index.css';
 
-const localStore = localforage.createInstance({
-  name: 'kanban'
-});
+const loadState = () => {
+  try {
+    const serializedState = localStorage.getItem('state');
+    if (serializedState === null) {
+      return undefined;
+    }
+    return JSON.parse(serializedState);
+  } catch (err) {
+    return undefined;
+  }
+};
 
-localStore.getItem('state')
-          .then(val => val = val || undefined)
-          .then(val => configStore(val), err => {
-            console.log(err);
-            return configStore(null);
-          })
-          .then(store => {
-            ReactDOM.render(
-                <Provider store={store}>
-                  <App />
-                </Provider>,
-                document.getElementById('root'));
-            store.subscribe(throttle(() => {
-              localStore.setItem('state', store.getState());
-            }, 1000));
-          });
+const saveState = state => {
+  try {
+    const serializedState = JSON.stringify(state);
+    localStorage.setItem('state', serializedState);
+  } catch (err) {
+    console.error(err);
+  }
+};
+
+const persistedState = loadState();
+const store = configStore(persistedState);
+
+store.subscribe(throttle(() => {
+  saveState(store.getState());
+}));
+
+ReactDOM.render(
+    <Provider store={store}>
+      <App />
+    </Provider>,
+    document.getElementById('root'));
 
 registerServiceWorker();
