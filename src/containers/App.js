@@ -15,7 +15,6 @@ class App extends Component {
     onDeleteLane: PropTypes.func.isRequired,
     onEditLane: PropTypes.func.isRequired,
     onMoveLane: PropTypes.func.isRequired,
-    onReset: PropTypes.func.isRequired,
   };
 
   render() {
