@@ -1,6 +1,7 @@
 import Lane from '../components/Lane';
 import * as LaneActions from '../actions/lanes';
 import * as NoteActions from '../actions/notes';
+import * as Strings from '../constants/strings';
 import { connect } from 'react-redux';
 
 const mapStateToProps = state => ({
@@ -9,7 +10,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   onCreateNote(laneId) {
-    const newNote = NoteActions.createNote('New note');
+    const newNote = NoteActions.createNote(Strings.NEW_TASK);
 
     dispatch(newNote);
     dispatch(LaneActions.attachToLane(laneId, newNote.payload.id));

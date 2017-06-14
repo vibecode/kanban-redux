@@ -12,6 +12,11 @@ const defaultState = [
     id: uuid.v4(),
     name: 'In progress',
     notes: []
+  },
+  {
+    id: uuid.v4(),
+    name: 'Complete',
+    notes: []
   }
 ];
 
