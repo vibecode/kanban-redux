@@ -1,32 +1,32 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import autobind from 'autobind-decorator';
-import { DragSource, DropTarget } from 'react-dnd';
-import * as itemTypes from '../constants/itemTypes';
-import styles from './Note.css';
+import React, { Component } from 'react'
+import PropTypes from 'prop-types'
+import autobind from 'autobind-decorator'
+import { DragSource, DropTarget } from 'react-dnd'
+import * as itemTypes from '../constants/itemTypes'
+import styles from './Note.module.css'
 
 const noteSource = {
   beginDrag(props) {
     return {
       id: props.id
-    };
+    }
   },
   isDragging(props, monitor) {
-    return props.id === monitor.getItem().id;
+    return props.id === monitor.getItem().id
   }
-};
+}
 
 const noteTarget = {
   hover(targetProps, monitor) {
-    const targetId = targetProps.id;
-    const sourceProps = monitor.getItem();
-    const sourceId = sourceProps.id;
+    const targetId = targetProps.id
+    const sourceProps = monitor.getItem()
+    const sourceId = sourceProps.id
 
     if (sourceId !== targetId) {
-      targetProps.onMoveNote(sourceId, targetId);
+      targetProps.onMoveNote(sourceId, targetId)
     }
   }
-};
+}
 
 @DragSource(itemTypes.NOTE, noteSource, (connect, monitor) => ({
   connectDragSource: connect.dragSource(),
@@ -43,12 +43,12 @@ class Note extends Component {
     isDragging: PropTypes.bool,
     onMoveNote: PropTypes.func.isRequired,
     onDeleteNote: PropTypes.func.isRequired,
-    id: PropTypes.string.isRequired,
-  };
+    id: PropTypes.string.isRequired
+  }
 
   @autobind
   handleDelete() {
-    this.props.onDeleteNote(this.props.id);
+    this.props.onDeleteNote(this.props.id)
   }
 
   render() {
@@ -56,22 +56,20 @@ class Note extends Component {
       connectDragSource,
       connectDropTarget,
       isDragging,
-      children,
-    } = this.props;
+      children
+    } = this.props
 
     return connectDragSource(
-        connectDropTarget(
-            <div className={styles.noteContainer}>
-              <li className={styles.note} style={{opacity: isDragging ? 0 : 1}}>
-                {children}
-              </li>
-              <button
-                  className={styles.deleteNote}
-                  onClick={this.handleDelete}/>
-            </div>
-        )
-    );
+      connectDropTarget(
+        <div className={styles.noteContainer}>
+          <li className={styles.note} style={{ opacity: isDragging ? 0 : 1 }}>
+            {children}
+          </li>
+          <button className={styles.deleteNote} onClick={this.handleDelete} />
+        </div>
+      )
+    )
   }
 }
 
-export default Note;
+export default Note
