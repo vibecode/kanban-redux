@@ -1,13 +1,13 @@
 {
-  "main.css": "/kanban-redux/static/css/main.2d688b35.chunk.css",
-  "main.js": "/kanban-redux/static/js/main.0b84c578.chunk.js",
-  "main.js.map": "/kanban-redux/static/js/main.0b84c578.chunk.js.map",
-  "runtime~main.js": "/kanban-redux/static/js/runtime~main.6504c25d.js",
-  "runtime~main.js.map": "/kanban-redux/static/js/runtime~main.6504c25d.js.map",
-  "static/js/2.cf0336e6.chunk.js": "/kanban-redux/static/js/2.cf0336e6.chunk.js",
-  "static/js/2.cf0336e6.chunk.js.map": "/kanban-redux/static/js/2.cf0336e6.chunk.js.map",
+  "main.css": "/kanban-redux/static/css/main.30759f0f.chunk.css",
+  "main.js": "/kanban-redux/static/js/main.b7a0ed41.chunk.js",
+  "main.js.map": "/kanban-redux/static/js/main.b7a0ed41.chunk.js.map",
+  "runtime~main.js": "/kanban-redux/static/js/runtime~main.710ccc4a.js",
+  "runtime~main.js.map": "/kanban-redux/static/js/runtime~main.710ccc4a.js.map",
+  "static/js/2.aa4c2b5a.chunk.js": "/kanban-redux/static/js/2.aa4c2b5a.chunk.js",
+  "static/js/2.aa4c2b5a.chunk.js.map": "/kanban-redux/static/js/2.aa4c2b5a.chunk.js.map",
   "index.html": "/kanban-redux/index.html",
-  "precache-manifest.d19c68af66efae571fd9052d719a2891.js": "/kanban-redux/precache-manifest.d19c68af66efae571fd9052d719a2891.js",
+  "precache-manifest.c737a6973b96fb9981dd8ed47f287aca.js": "/kanban-redux/precache-manifest.c737a6973b96fb9981dd8ed47f287aca.js",
   "service-worker.js": "/kanban-redux/service-worker.js",
-  "static/css/main.2d688b35.chunk.css.map": "/kanban-redux/static/css/main.2d688b35.chunk.css.map"
+  "static/css/main.30759f0f.chunk.css.map": "/kanban-redux/static/css/main.30759f0f.chunk.css.map"
 }
